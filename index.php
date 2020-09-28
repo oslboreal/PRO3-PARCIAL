@@ -55,11 +55,23 @@ try {
                     echo GenericResponse::obtain(false, 'Unauthorized.');
                 }
             }
-            /* Punto 6 */
-            if ($method == 'GET') {
-                // No especifica para que rol es posible, lo habilito para todos.
+            /* Punto 6 - Terminado */
+            if ($method == 'GET' && empty($_SERVER['QUERY_STRING'])) {
+                // No se especifica para que rol en las consignas, lo habilito para todos.
                 if (LoginController::IsInRole('user') || LoginController::IsInRole('admin')) {
                     AutoController::GetEstacionados();
+                } else {
+                    echo GenericResponse::obtain(false, 'Unauthorized.');
+                }
+            }
+
+            /* Punto 7 - Sin terminar */
+            if ($method == 'GET' && !empty($_SERVER['QUERY_STRING'])) {
+                // No se especifica para que rol en las consignas, lo habilito para todos.
+                if (LoginController::IsInRole('user') || LoginController::IsInRole('admin')) {
+                    $queries = array();
+                    parse_str($_SERVER['QUERY_STRING'], $queries);
+                    AutoController::GetByPatente($queries['patente']);
                 } else {
                     echo GenericResponse::obtain(false, 'Unauthorized.');
                 }

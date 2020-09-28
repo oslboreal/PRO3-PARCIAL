@@ -22,6 +22,12 @@ class AutoController
         }
     }
 
+    public static function GetByPatente($patente)
+    {
+        $autos = Auto::getByPatente($patente);
+        echo GenericResponse::obtain(true, '', $autos);
+    }
+
     public static function GetEstacionados()
     {
         $autos = Auto::getAll();
