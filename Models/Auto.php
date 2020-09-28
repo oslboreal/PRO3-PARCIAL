@@ -83,6 +83,21 @@ class Auto
         return $listaAutos;
     }
 
+    public static function sumAllByType($tipo)
+    {
+        $archivoArray = (array) JsonHandler::readJson('Autos.json');
+        $suma = 0;
+
+        foreach ($archivoArray as $datos) {
+            $nuevoAuto = new Auto($datos->patente, $datos->tipo, $datos->date, $datos->email, $datos->fecha_egreso, $datos->importe);
+
+            // Sólo los estacionados, no los retirados.
+            if ($nuevoAuto->tipo == $tipo)
+                $suma = $suma + $nuevoAuto->importe;
+        }
+
+        return $suma;
+    }
 
     public static function getByPatente($patente)
     {

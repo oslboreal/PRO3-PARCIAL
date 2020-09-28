@@ -89,6 +89,18 @@ try {
             }
             break;
 
+            /* Punto 8 */
+        case '/importe':
+            if ($method == 'GET') {
+                if (LoginController::IsInRole('admin')) {
+                    $tipo = explode('/', $path)[2];
+                    AutoController::GetTotalByTipo($tipo);
+                } else {
+                    echo GenericResponse::obtain(false, 'Unauthorized.');
+                }
+            }
+            break;
+
         default:
             echo GenericResponse::obtain(false, 'Invalid Endpoint.');
             break;

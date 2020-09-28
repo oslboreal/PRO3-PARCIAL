@@ -34,6 +34,12 @@ class AutoController
         echo GenericResponse::obtain(true, '', $autos);
     }
 
+    public static function GetTotalByTipo($tipo)
+    {
+        $sum = Auto::sumAllByType($tipo);
+        echo GenericResponse::obtain(true, '', $sum);
+    }
+
     public static function Remove($patente)
     {
         $auto = Auto::getByPatente($patente);
