@@ -1,0 +1,26 @@
+[
+    {
+        "patente": "aaa123",
+        "tipo": "hora",
+        "date": 1601333732,
+        "email": "admin@mail.com",
+        "fecha_egreso": 1601336061,
+        "importe": 647.5913888888889
+    },
+    {
+        "patente": "aaa1231",
+        "tipo": "hora",
+        "date": 1601333891,
+        "email": "admin@mail.com",
+        "fecha_egreso": 1601336074,
+        "importe": 606.9952777777778
+    },
+    {
+        "patente": "aaa12311",
+        "tipo": "hora",
+        "date": 1601334059,
+        "email": "admin@mail.com",
+        "fecha_egreso": "",
+        "importe": 0
+    }
+]
