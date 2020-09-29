@@ -23,12 +23,12 @@ try {
     $fixedPath = explode('/', $path)[1];
 
     switch ('/' . $fixedPath) {
-            /* Punto 2 - Terminado */
+            /* Punto 2 - */
         case '/login':
             if ($method == 'POST')
                 LoginController::Login();
             break;
-            /* Punto 1 - Terminado */
+            /* Punto 1 - */
         case '/registro':
             if ($method == 'POST')
                 UserController::Create();
@@ -36,7 +36,7 @@ try {
             if ($method == 'GET')
                 UserController::GetAll();
             break;
-            /* Punto 3 - Terminado */
+            /* Punto 3  */
         case '/precio':
             if ($method == 'POST') {
                 if (LoginController::IsInRole('admin')) {
@@ -47,7 +47,7 @@ try {
             }
             break;
         case '/ingreso':
-            /* Punto 4 - Terminado */
+            /* Punto 4  */
             if ($method == 'POST') {
                 if (LoginController::IsInRole('user')) {
                     AutoController::Create();
@@ -55,7 +55,7 @@ try {
                     echo GenericResponse::obtain(false, 'Unauthorized.');
                 }
             }
-            /* Punto 6 - Terminado */
+            /* Punto 6  */
             if ($method == 'GET' && empty($_SERVER['QUERY_STRING'])) {
                 // No se especifica para que rol en las consignas, lo habilito para todos.
                 if (LoginController::IsInRole('user') || LoginController::IsInRole('admin')) {
@@ -65,7 +65,7 @@ try {
                 }
             }
 
-            /* Punto 7 - Sin terminar */
+            /* Punto 7  */
             if ($method == 'GET' && !empty($_SERVER['QUERY_STRING'])) {
                 // No se especifica para que rol en las consignas, lo habilito para todos.
                 if (LoginController::IsInRole('user') || LoginController::IsInRole('admin')) {
@@ -77,7 +77,7 @@ try {
                 }
             }
             break;
-            /* Punto 5 - Terminado */
+            /* Punto 5  */
         case '/retiro':
             if ($method == 'GET') {
                 if (LoginController::IsInRole('user')) {
@@ -94,6 +94,7 @@ try {
             if ($method == 'GET') {
                 if (LoginController::IsInRole('admin')) {
                     $tipo = explode('/', $path)[2];
+                    var_dump($tipo);
                     AutoController::GetTotalByTipo($tipo);
                 } else {
                     echo GenericResponse::obtain(false, 'Unauthorized.');
